@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💌 For Skylar</title>
+  <style>
+    :root { --pad: 18px; --pink: #ff6b9d; --light-pink: #ffb6d9; --dark-pink: #c2185b; }
+    body{
+      margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+      font-family: 'Georgia', 'Trebuchet MS', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #ffe0ec 0%, #ffb6d9 30%, #ffc0cb 70%, #ffe0ec 100%);
+      color:#333;
+    }
+    .card{
+      width:min(560px, 92vw);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,240,248,0.85));
+      border: 2px solid rgba(255,107,157,0.2);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(255,107,157,0.2), inset 0 1px 0 rgba(255,255,255,0.8);
+      overflow:hidden;
+      position: relative;
+    }
+    .snoopy-deco{
+      position: absolute;
+      right: -15px;
+      top: 20px;
+      font-size: 80px;
+      opacity: 0.15;
+      z-index: 0;
+    }
+    .top{
+      padding: var(--pad);
+      display:flex; gap:14px; align-items:center;
+      background: linear-gradient(135deg, rgba(255,107,157,0.15), rgba(255,182,193,0.12));
+      border-bottom: 2px solid rgba(255,107,157,0.1);
+      position: relative;
+      z-index: 1;
+    }
+    .badge{
+      width:50px; height:50px; border-radius: 16px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(255,107,157,0.25), rgba(255,182,193,0.25));
+      font-size: 28px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .title{ font-weight: 700; font-size: 18px; color: var(--dark-pink); }
+    .subtitle{ font-size: 14px; opacity: 0.8; margin-top: 3px; color: var(--pink); }
+    .content{ padding: 24px var(--pad) 8px; position: relative; z-index: 1; }
+    .bubble{
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,250,250,0.95));
+      border: 2px solid rgba(255,107,157,0.15);
+      border-radius: 20px;
+      padding: 20px;
+      font-size: 18px;
+      line-height: 1.5;
+      position: relative;
+      color: #333;
+      box-shadow: 0 6px 20px rgba(255,107,157,0.1);
+    }
+    .bubble:after{
+      content:"";
+      position:absolute;
+      left: 24px;
+      bottom:-12px;
+      width:20px; height:20px;
+      background:linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,250,250,0.95));
+      border-left:2px solid rgba(255,107,157,0.15);
+      border-bottom:2px solid rgba(255,107,157,0.15);
+      transform: rotate(45deg);
+    }
+    .hint{ padding: 14px var(--pad) 0; font-size: 14px; opacity:0.7; color: var(--pink); font-style: italic; }
+    .actions{
+      padding: 16px var(--pad) 20px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      position: relative;
+      z-index: 1;
+    }
+    button{
+      border:0; cursor:pointer; padding: 13px 16px;
+      border-radius: 14px; font-weight: 650;
+      font-size: 15px;
+      transition: transform .1s ease, filter .15s ease, box-shadow .2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    button:hover{ 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    button:active{ transform: scale(0.96); }
+    .primary{ 
+      background: linear-gradient(135deg, var(--pink), var(--light-pink));
+      color:white; 
+      font-weight: 700;
+    }
+    .secondary{ 
+      background: linear-gradient(135deg, rgba(255,107,157,0.08), rgba(255,182,193,0.08));
+      color: var(--pink);
+      font-weight: 600;
+    }
+    .ghost{ background: transparent; border:2px dashed var(--pink); color: var(--pink); }
+    .row{ display:flex; gap:10px; width:100%; }
+    .row button{ flex: 1; }
+    .footer{
+      padding: 12px var(--pad) 16px;
+      font-size: 13px; opacity: 0.65;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      border-top: 1px solid rgba(255,107,157,0.1);
+      position: relative;
+      z-index: 1;
+      color: var(--pink);
+    }
+    .yesScreen{
+      padding: 32px var(--pad) 28px;
+      text-align:center;
+      position: relative;
+      z-index: 1;
+    }
+    .big{
+      font-size: 32px; font-weight: 800; margin: 14px 0 10px;
+      background: linear-gradient(135deg, var(--dark-pink), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .small{
+      font-size: 16px; opacity:0.8; margin:0 0 18px; color: #333;
+    }
+    .hearts{ font-size: 38px; letter-spacing: 4px; animation: pulse 1.5s ease-in-out infinite; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .snoopy-cheer {
+      font-size: 120px;
+      margin: 16px 0;
+      animation: bounce 1s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="application" aria-label="Valentine App">
+    <div class="snoopy-deco">🐶</div>
+    <div class="top">
+      <div class="badge">💗</div>
+      <div>
+        <div class="title" id="topTitle">Something for you</div>
+        <div class="subtitle" id="topSub">Happy Valentine’s Day 💘</div>
+      </div>
+    </div>
+
+    <div class="content" id="content">
+      <div class="bubble" id="bubble">Loading...</div>
+      <div class="hint" id="hint"></div>
+    </div>
+
+    <div class="actions" id="actions">
+      <div class="row">
+        <button class="secondary" id="backBtn" onclick="back()" disabled>Back</button>
+        <button class="primary" id="nextBtn" onclick="next()">Next</button>
+      </div>
+      <button class="ghost" id="musicBtn" onclick="toggleMusic()">Optional: play a little song 🎶</button>
+    </div>
+
+    <div class="footer">
+      <span id="progress">Step 1 of 8</span>
+      <span id="signature">— Noah</span>
+    </div>
+  </div>
+
+  <!-- Optional tiny background music placeholder -->
+  <audio id="audio" loop>
+    <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=" type="audio/wav">
+  </audio>
+
+<script>
+  // Names + header
+  const herName = "Skylar";
+  const yourName = "— Noah";
+  const dateLine = "Happy Valentine’s Day 💘";
+
+  // Prompt journey - personalized messages (not generic)
+  const steps = [
+    { text: `Hey ${herName} 💗`, hint: "Let's go 🥰" },
+    { text: "I made this for you because you're so special to me.", hint: "Keep reading 💕" },
+    { text: "I've been thinking about how much you mean to me.", hint: "Next up..." },
+    { text: "You're absolutely stunning, inside and out.", hint: "Snoopy agrees 🐶" },
+    { text: "Being with you is my favorite part of every day.", hint: "You know this ❤️" },
+    { text: "There's something I need to ask you.", hint: "The important part" },
+    { text: `${herName}… will you be my Valentine? 💝`, hint: "I really hope so 💕", isQuestion: true },
+  ];
+
+  let idx = 0;
+
+  const bubble = document.getElementById("bubble");
+  const hint = document.getElementById("hint");
+  const progress = document.getElementById("progress");
+  const backBtn = document.getElementById("backBtn");
+  const signature = document.getElementById("signature");
+  const topSub = document.getElementById("topSub");
+  const actions = document.getElementById("actions");
+  const content = document.getElementById("content");
+
+  signature.textContent = yourName;
+  topSub.textContent = dateLine;
+
+  function render() {
+    const total = steps.length + 1;
+    progress.textContent = `Step ${Math.min(idx+1, total)} of ${total}`;
+    backBtn.disabled = idx === 0;
+
+    const step = steps[idx];
+    bubble.textContent = step.text;
+    hint.textContent = step.hint || "";
+
+    if (step.isQuestion) {
+      actions.innerHTML = `
+        <div class="row">
+          <button class="secondary" onclick="back()">Back</button>
+          <button class="primary" onclick="yes()">YES 💖</button>
+        </div>
+        <div class="row">
+          <button class="secondary" id="noBtn" onclick="no()">No 😶</button>
+          <button class="secondary" onclick="toggleMusic()">🎶</button>
+        </div>
+      `;
+
+      const noBtn = document.getElementById("noBtn");
+
+      noBtn.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        dodge(noBtn);
+      }, {passive:false});
+
+      noBtn.addEventListener("mouseover", () => dodge(noBtn));
+    } else {
+      actions.innerHTML = `
+        <div class="row">
+          <button class="secondary" onclick="back()" ${idx===0?'disabled':''}>Back</button>
+          <button class="primary" onclick="next()">Next</button>
+        </div>
+        <button class="ghost" onclick="toggleMusic()">Optional: play a little song 🎶</button>
+      `;
+    }
+  }
+
+  function next() {
+    if (idx < steps.length - 1) idx++;
+    render();
+  }
+
+  function back() {
+    if (idx > 0) idx--;
+    render();
+  }
+
+  function yes() {
+    content.innerHTML = `
+      <div class="yesScreen">
+        <div class="hearts">💖💖💖</div>
+        <div class="snoopy-cheer">🐶</div>
+        <div class="big">YOU'RE MY VALENTINE!</div>
+        <p class="small">You just made me the happiest 🥹</p>
+        <p class="small">Text me: <b>"YES 💘"</b> and I'll treasure it forever.</p>
+        <p class="small">I love you, ${herName}. 💕</p>
+        <button class="primary" onclick="confetti()">Celebrate with me ✨</button>
+      </div>
+    `;
+    actions.innerHTML = `
+      <div class="row">
+        <button class="secondary" onclick="toggleMusic()">🎶</button>
+        <button class="secondary" onclick="share()">Share</button>
+      </div>
+    `;
+    progress.textContent = `Step ${steps.length+1} of ${steps.length+1}`;
+  }
+
+  function no() {
+    alert("That button appears to be broken 🤔 Try the other one 😇");
+  }
+
+  function dodge(btn){
+    btn.style.position = "fixed";
+    const x = Math.floor(Math.random() * window.innerWidth - btn.offsetWidth);
+    const y = Math.floor(Math.random() * window.innerHeight - btn.offsetHeight);
+    btn.style.left = Math.max(10, x) + "px";
+    btn.style.top = Math.max(10, y) + "px";
+  }
+
+  function toggleMusic() {
+    const a = document.getElementById("audio");
+    if (a.paused) a.play().catch(()=>{});
+    else a.pause();
+  }
+
+  function share() {
+    if (navigator.share) {
+      navigator.share({ title: "💌 For Skylar", text: "Open this 💘", url: location.href }).catch(()=>{});
+    } else {
+      prompt("Copy this link:", location.href);
+    }
+  }
+
+  function confetti() {
+    for (let i=0; i<30; i++){
+      const s = document.createElement("div");
+      s.textContent = ["✨","💖","💘","🌸"][Math.floor(Math.random()*4)];
+      s.style.position="fixed";
+      s.style.left=(Math.random()*100)+"vw";
+      s.style.top="110vh";
+      s.style.fontSize=(16+Math.random()*18)+"px";
+      s.style.transition="transform 1.2s ease, opacity 1.2s ease";
+      document.body.appendChild(s);
+
+      requestAnimationFrame(()=>{
+        s.style.opacity="0";
+        s.style.transform=`translateY(-140vh) rotate(${Math.random()*360}deg)`;
+      });
+
+      setTimeout(()=>s.remove(), 1300);
+    }
+  }
+
+  render();
+</script>
+</body>
+</html>
