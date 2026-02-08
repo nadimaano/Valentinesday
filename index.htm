@@ -8,53 +8,54 @@
     :root { --pad: 18px; --pink: #ff6b9d; --light-pink: #ffb6d9; --dark-pink: #c2185b; }
     body{
       margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
-      font-family: 'Georgia', 'Trebuchet MS', system-ui, -apple-system, sans-serif;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
       background: linear-gradient(135deg, #ffe0ec 0%, #ffb6d9 30%, #ffc0cb 70%, #ffe0ec 100%);
       color:#333;
     }
     .card{
-      width:min(560px, 92vw);
-      background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,240,248,0.85));
-      border: 2px solid rgba(255,107,157,0.2);
-      border-radius: 28px;
-      box-shadow: 0 24px 60px rgba(255,107,157,0.2), inset 0 1px 0 rgba(255,255,255,0.8);
+      width:min(560px, 94vw);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.98), rgba(255,245,248,0.98));
+      border: 1px solid rgba(255,107,157,0.08);
+      border-radius: 20px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
       overflow:hidden;
       position: relative;
+      padding-bottom: 8px;
     }
     .snoopy-deco{
-      width: 90%;
-      height: 90%;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       object-fit: contain;
       background: transparent;
       display:block;
     }
+    /* Snoopy wrapper: keep it small, anchored and non-intrusive. */
     .snoopy-wrap{
       position: absolute;
-      right: -18px;
-      bottom: -8px;
-      width: 130px;
-      height: 130px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,240,248,0.9));
+      right: -14px;
+      bottom: -6px;
+      width: 110px;
+      height: 110px;
+      border-radius: 14px;
+      background: transparent; /* ensure no background so PNG transparency shows */
       display:flex; align-items:center; justify-content:center;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
       z-index: 0;
       pointer-events: none;
     }
+    /* Developer note: Use a true transparent PNG for `Snoopy Heart.png`. If you see a checkerboard pattern in the image, that means the checkerboard is baked into the pixels (image is not actually transparent). Replace with a PNG that has an actual alpha channel. */
     .top{
-      padding: var(--pad);
-      display:flex; gap:14px; align-items:center;
-      background: linear-gradient(135deg, rgba(255,107,157,0.15), rgba(255,182,193,0.12));
-      border-bottom: 2px solid rgba(255,107,157,0.1);
+      padding: 18px 18px 12px;
+      display:flex; gap:12px; align-items:center;
+      background: transparent;
       position: relative;
       z-index: 1;
     }
     .badge{
-      width:50px; height:50px; border-radius: 16px;
+      width:46px; height:46px; border-radius: 12px;
       display:grid; place-items:center;
-      background: linear-gradient(135deg, rgba(255,107,157,0.25), rgba(255,182,193,0.25));
-      font-size: 28px;
+      background: linear-gradient(135deg, rgba(255,107,157,0.12), rgba(255,182,193,0.08));
+      font-size: 24px;
       animation: float 3s ease-in-out infinite;
     }
     @keyframes float {
@@ -63,17 +64,16 @@
     }
     .title{ font-weight: 700; font-size: 18px; color: var(--dark-pink); }
     .subtitle{ font-size: 14px; opacity: 0.8; margin-top: 3px; color: var(--pink); }
-    .content{ padding: 24px var(--pad) 8px; position: relative; z-index: 1; }
+    .content{ padding: 14px var(--pad) 10px; position: relative; z-index: 1; display:flex; flex-direction:column; gap:12px; }
     .bubble{
-      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,250,250,0.95));
-      border: 2px solid rgba(255,107,157,0.15);
-      border-radius: 20px;
-      padding: 20px;
-      font-size: 18px;
-      line-height: 1.5;
+      background: rgba(255,255,255,0.9);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 17px;
+      line-height: 1.45;
       position: relative;
       color: #333;
-      box-shadow: 0 6px 20px rgba(255,107,157,0.1);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
     }
     .bubble:after{
       content:"";
@@ -161,23 +161,21 @@
       50% { transform: translateY(-20px); }
     }
     /* audio-player removed: using hidden audio element and autoplay-on-touch */
-    /* Slideshow styles */
+    /* Photo area (fixed aspect ratio) */
     .slideshow{
       position: relative;
-      width: calc(100% - 2*var(--pad));
       width: 100%;
-      height: 220px;
-      margin: 0 auto 14px;
-      border-radius: 14px;
+      aspect-ratio: 16/9;
+      max-height: 52vh;
+      margin: 0 auto 6px;
+      border-radius: 12px;
       overflow: hidden;
-      background: #fff;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      background: #f7f5f6;
     }
     .slideshow img.slide{
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: contain; display:block; background: #fff;
-      opacity: 0; transition: opacity 0.8s ease;
-      align-items:center; justify-content:center;
+      object-fit: contain; display:block; background: transparent;
+      opacity: 0; transition: opacity 0.6s ease;
     }
     .slideshow img.slide.active{ opacity: 1; }
     .slideshow-caption{ text-align:center; padding:8px 12px; font-size:15px; color: #333; opacity:0.95 }
@@ -185,9 +183,12 @@
     .dots button{ width:8px; height:8px; border-radius:50%; border:0; background: rgba(0,0,0,0.12); }
     .dots button.active{ background: var(--pink); }
     @media (max-width:420px){
-      .slideshow{ height: 160px; }
-      .snoopy-deco{ width:110px; height:110px; }
+      .slideshow{ aspect-ratio: 4/3; }
+      .snoopy-wrap{ width: 100px; height: 100px; right: -12px; bottom: -6px; }
     }
+    /* small music link */
+    .music-control{ text-align:center; margin-top:6px; }
+    .music-link{ background:transparent; border:0; color: var(--pink); font-size:14px; padding:6px 8px; cursor:pointer; }
   </style>
 </head>
 <body>
@@ -227,7 +228,9 @@
           <button class="secondary" id="backBtn" onclick="back()" disabled>Back</button>
           <button class="primary" id="nextBtn" onclick="next()">Next</button>
         </div>
-        <button class="ghost" id="musicBtn" onclick="toggleMusic()">Play music 🎶</button>
+    </div>
+    <div class="music-control">
+      <button class="music-link" id="musicBtn" onclick="toggleMusic()">Play music 🎶</button>
     </div>
 
     <div class="footer">
@@ -301,7 +304,6 @@
         </div>
         <div class="row">
           <button class="secondary" id="noBtn" onclick="no()">No 😶</button>
-          <button class="secondary" onclick="toggleMusic()">🎶</button>
         </div>
       `;
 
@@ -319,7 +321,6 @@
           <button class="secondary" onclick="back()" ${idx===0?'disabled':''}>Back</button>
           <button class="primary" onclick="next()">Next</button>
         </div>
-        <button class="ghost" onclick="toggleMusic()">Optional: play a little song 🎶</button>
       `;
     }
   }
