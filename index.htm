@@ -15,344 +15,352 @@
       --accent: #d81f6a;   /* rose/fuchsia */
       --accent-2: #ff6b9d; /* lighter pink */
       --champagne: #f7e9e1; /* pale warm */
-      --text: #111216;     /* near-black */
-      --muted: #7a6f73;    /* muted gray */
-      --hair: rgba(226,182,193,0.35); /* light hairline */
-      --card-radius: 20px;
-    }
+      <!doctype html>
+      <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>💌 For Skylar</title>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        <style>
+          :root{
+            /* Spacing */
+            --pad: 20px; --gap: 14px;
+            /* Palette */
+            --bg-start: #fffafc; /* almost white blush */
+            --bg-end: #fff0f4;   /* pale pink */
+            --accent: #d81f6a;   /* rose/fuchsia */
+            --accent-2: #ff6b9d; /* lighter pink */
+            --champagne: #f7e9e1; /* pale warm */
+            --text: #111216;     /* near-black */
+            --muted: #7a6f73;    /* muted gray */
+            --hair: rgba(226,182,193,0.35); /* light hairline */
+            --card-radius: 20px;
+          }
 
-    html,body{ height:100%; }
-    body{
-      margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
-      color:var(--text);
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      padding:24px;
-    }
+          html,body{ height:100%; }
+          body{
+            margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
+            color:var(--text);
+            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+            padding:24px;
+          }
 
-    .card{
-      width:min(640px, 96vw);
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,250,250,0.99));
-      border: 1px solid var(--hair);
-      border-radius: var(--card-radius);
-      box-shadow: 0 10px 30px rgba(16,14,20,0.06);
-      overflow:hidden;
-      position: relative;
-      padding: 18px;
-      max-width: 640px;
-    }
+          .card{
+            width:min(640px, 96vw);
+            background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,250,250,0.99));
+            border: 1px solid var(--hair);
+            border-radius: var(--card-radius);
+            box-shadow: 0 10px 30px rgba(16,14,20,0.06);
+            overflow:hidden;
+            position: relative;
+            padding: 18px;
+            max-width: 640px;
+          }
 
-    /* Snoopy: sticker in corner. Keep transparent and non-intrusive. */
-    .snoopy-wrap{ position:absolute; right:14px; bottom:14px; width:110px; height:110px; pointer-events:none; z-index:0; }
-    .snoopy-deco{ width:100%; height:100%; object-fit:contain; display:block; background:transparent; }
-    /* Developer note: use a true transparent PNG for `Snoopy Heart.png`. A checkerboard inside the image pixels means the background is baked in and must be replaced. */
+          /* Snoopy sticker (non-intrusive) */
+          .snoopy-wrap{ position:absolute; right:12px; bottom:12px; width:96px; height:96px; pointer-events:none; z-index:0; }
+          .snoopy-deco{ width:100%; height:100%; object-fit:contain; display:block; background:transparent; }
+          /* Developer note: use a true transparent PNG for `Snoopy Heart.png`. A checkerboard inside the image pixels means the background is baked in and must be replaced. */
 
-    .top{ display:flex; gap:12px; align-items:center; padding:6px 6px 12px; z-index:1; }
-    .badge{ width:44px; height:44px; display:grid; place-items:center; border-radius:10px; background:var(--champagne); font-size:20px; }
-    .title{ font-family: 'Playfair Display', Georgia, serif; font-size:26px; line-height:1; color:var(--text); margin:0; font-weight:700; }
-    .subtitle{ font-size:13px; margin-top:4px; color:var(--muted); }
+          .top{ display:flex; gap:12px; align-items:center; padding:6px 6px 12px; z-index:1; }
+          .badge{ width:44px; height:44px; display:grid; place-items:center; border-radius:10px; background:var(--champagne); font-size:20px; }
+          .title{ font-family: 'Playfair Display', Georgia, serif; font-size:26px; line-height:1; color:var(--text); margin:0; font-weight:700; }
+          .subtitle{ font-size:13px; margin-top:4px; color:var(--muted); }
 
-    .content{ padding: 12px 6px 6px; display:flex; flex-direction:column; gap:18px; z-index:1; }
+          .content{ padding: 12px 6px 6px; display:flex; flex-direction:column; gap:18px; z-index:1; }
 
-    /* Photo area */
-    .slideshow{ width:100%; aspect-ratio: 4/3; border-radius:12px; overflow:hidden; border:1px solid var(--hair); background:var(--champagne); display:block; }
-    .slideshow img.slide{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .6s ease; }
-    .slideshow img.slide.active{ opacity:1; }
-    .slideshow-caption{ text-align:center; margin-top:8px; color:var(--muted); font-size:14px; }
-    .dots{ display:flex; gap:8px; justify-content:center; padding-top:8px; }
-    .dots button{ width:9px; height:9px; border-radius:50%; border:0; background: rgba(0,0,0,0.12); }
-    .dots button.active{ background: var(--accent); }
+          /* Photo area */
+          .slideshow{ position:relative; width:100%; aspect-ratio: 4/3; border-radius:12px; overflow:hidden; border:1px solid var(--hair); background:var(--champagne); display:block; }
+          .slideshow img.slide{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .45s ease; }
+          .slideshow img.slide.active{ opacity:1; }
+          .slideshow-caption{ text-align:center; margin-top:8px; color:var(--muted); font-size:14px; }
+          .dots{ display:flex; gap:8px; justify-content:center; padding-top:8px; }
+          .dots button{ width:9px; height:9px; border-radius:50%; border:0; background: rgba(0,0,0,0.12); }
+          .dots button.active{ background: var(--accent); }
 
-    /* Message bubble */
-    .bubble{ background:#fff; border-radius:12px; padding:18px; font-size:17px; line-height:1.6; color:var(--text); box-shadow: 0 8px 20px rgba(16,14,20,0.04); border:1px solid rgba(0,0,0,0.03); font-family: Georgia, 'Times New Roman', serif; }
-    .hint{ font-style:italic; color:var(--muted); font-size:13px; padding-left:2px; }
+          /* Message bubble */
+          .bubble{ background:#fff; border-radius:12px; padding:18px; font-size:17px; line-height:1.6; color:var(--text); box-shadow: 0 8px 20px rgba(16,14,20,0.04); border:1px solid rgba(0,0,0,0.03); font-family: Georgia, 'Times New Roman', serif; }
+          .hint{ font-style:italic; color:var(--muted); font-size:13px; padding-left:2px; }
 
-    /* Buttons */
-    .row{ display:flex; gap:12px; }
-    .row button{ flex:1; padding:12px 14px; border-radius:12px; font-weight:600; font-size:15px; }
-    .primary{ background: linear-gradient(90deg, var(--accent), var(--accent-2)); color:#fff; box-shadow: 0 6px 18px rgba(216,31,106,0.12); border:0; }
-    .primary:active{ transform:translateY(1px); }
-    .secondary{ background: #fff; color:var(--accent); border:1px solid var(--hair); }
-    .ghost{ display:none; }
+          /* Actions + buttons */
+          .actions{ padding: 14px 6px 18px; z-index:1; }
+          .row{ display:flex; gap:12px; }
+          .row button{ flex:1; padding:12px 14px; border-radius:12px; font-weight:600; font-size:15px; cursor:pointer; }
+          .primary{ background: linear-gradient(90deg, var(--accent), var(--accent-2)); color:#fff; box-shadow: 0 6px 18px rgba(216,31,106,0.12); border:0; }
+          .primary:active{ transform:translateY(1px); }
+          .secondary{ background: #fff; color:var(--accent); border:1px solid var(--hair); }
+          .ghost{ display:none; }
 
-    .music-control{ text-align:center; margin-top:8px; }
-    .music-link{ color:var(--accent); font-size:14px; background:transparent; border:1px solid rgba(216,31,106,0.06); padding:6px 10px; border-radius:999px; }
+          .music-control{ text-align:center; margin-top:8px; }
+          .music-link{ color:var(--accent); font-size:14px; background:transparent; border:1px solid rgba(216,31,106,0.06); padding:6px 10px; border-radius:999px; cursor:pointer; }
 
-    .footer{ display:flex; justify-content:space-between; align-items:center; gap:8px; padding-top:8px; color:var(--muted); font-size:13px; }
+          .footer{ display:flex; justify-content:space-between; align-items:center; gap:8px; padding-top:8px; color:var(--muted); font-size:13px; }
 
-    @media (max-width:420px){
-      .card{ padding:14px; }
-      .title{ font-size:20px; }
-      .slideshow{ aspect-ratio: 3/2; }
-      .snoopy-wrap{ width:90px; height:90px; right:10px; bottom:10px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="card" role="application" aria-label="Valentine App">
-    <div class="snoopy-wrap" aria-hidden="true">
-      <img src="Snoopy Heart.png" alt="" class="snoopy-deco">
-    </div>
-    <div class="top">
-      <div class="badge">💗</div>
-      <div>
-        <div class="title" id="topTitle">Something for you</div>
-        <div class="subtitle" id="topSub">Happy Valentine’s Day 💘</div>
-      </div>
-    </div>
+          /* YES screen */
+          .yesScreen{ text-align:center; padding: 22px; }
+          .big{ font-family: 'Playfair Display', Georgia, serif; font-size:26px; color:var(--accent); margin:12px 0; font-weight:700; }
+          .small{ color:var(--muted); font-size:15px; margin:8px 0; }
+          .hearts{ font-size:34px; letter-spacing:6px; display:block; margin-bottom:8px; }
+          .snoopy-cheer{ width:140px; height:140px; object-fit:contain; margin:12px auto; pointer-events:none; }
 
-    <!-- Background music (hidden) -->
-    <audio id="audio" loop>
-      <source src="George%20Strait%20Write%20This%20Down%20with%20Lyrics.mp3" type="audio/mpeg">
-    </audio>
-    <div class="content" id="content">
-      <div class="slideshow" id="slideshow">
-        <img src="IMG_3542.JPG" class="slide active" alt="">
-        <img src="IMG_3555.JPG" class="slide" alt="">
-        <img src="IMG_3756.jpg" class="slide" alt="">
-        <img src="IMG_3505.jpg" class="slide" alt="">
-        <img src="IMG_3480.JPG" class="slide" alt="">
-        <div class="dots" id="slideshow-dots"></div>
-        <div class="slideshow-caption">These last 7 months have been amazing.</div>
-      </div>
+          @media (max-width:420px){
+            .card{ padding:14px; }
+            .title{ font-size:20px; }
+            .slideshow{ aspect-ratio: 3/2; }
+            .snoopy-wrap{ width:84px; height:84px; right:10px; bottom:10px; }
+            .primary, .secondary{ font-size:14px; padding:10px 12px; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="card" role="application" aria-label="Valentine App">
+          <div class="snoopy-wrap" aria-hidden="true">
+            <img src="Snoopy Heart.png" alt="" class="snoopy-deco">
+          </div>
 
-      <div class="bubble" id="bubble">Loading...</div>
-      <div class="hint" id="hint"></div>
-    </div>
+          <div class="top">
+            <div class="badge" aria-hidden="true">💗</div>
+            <div>
+              <div class="title" id="topTitle">Something for you</div>
+              <div class="subtitle" id="topSub">Happy Valentine’s Day</div>
+            </div>
+          </div>
 
-    <div class="actions" id="actions">
-        <div class="row">
-          <button class="secondary" id="backBtn" onclick="back()" disabled>Back</button>
-          <button class="primary" id="nextBtn" onclick="next()">Next</button>
+          <!-- Hidden background music (plays after first user interaction) -->
+          <audio id="audio" loop preload="auto">
+            <source src="George Strait Write This Down with Lyrics.mp3" type="audio/mpeg">
+          </audio>
+
+          <div class="content" id="content">
+            <div class="slideshow" id="slideshow">
+              <img src="IMG_3542.JPG" class="slide active" alt="">
+              <img src="IMG_3555.JPG" class="slide" alt="">
+              <img src="IMG_3756.jpg" class="slide" alt="">
+              <img src="IMG_3505.jpg" class="slide" alt="">
+              <img src="IMG_3480.JPG" class="slide" alt="">
+            </div>
+            <div class="slideshow-caption">These last 7 months have been amazing.</div>
+            <div class="dots" id="slideshow-dots" aria-hidden="false"></div>
+
+            <div class="bubble" id="bubble">Loading...</div>
+            <div class="hint" id="hint"></div>
+          </div>
+
+          <div class="actions" id="actions">
+            <div class="row">
+              <button type="button" class="secondary" id="backBtn" onclick="back()" disabled>Back</button>
+              <button type="button" class="primary" id="nextBtn" onclick="next()">Next</button>
+            </div>
+          </div>
+
+          <div class="music-control">
+            <button type="button" class="music-link" id="musicBtn" onclick="toggleMusic()">Play music</button>
+          </div>
+
+          <div class="footer">
+            <span id="progress">Step 1 of 8</span>
+            <span id="signature">— Noah</span>
+          </div>
         </div>
-    </div>
-    <div class="music-control">
-      <button class="music-link" id="musicBtn" onclick="toggleMusic()">Play music 🎶</button>
-    </div>
 
-    <div class="footer">
-      <span id="progress">Step 1 of 8</span>
-      <span id="signature">— Noah</span>
-    </div>
-  </div>
+      <script>
+        /* --- Audio start-on-touch (mobile autoplay workaround) --- */
+        let audioStarted = false;
+        const audioEl = document.getElementById('audio');
+        function startAudio() {
+          if (audioStarted) return;
+          audioStarted = true;
+          if (!audioEl) return;
+          audioEl.play().catch(()=>{});
+          document.removeEventListener('click', startAudio);
+          document.removeEventListener('touchstart', startAudio);
+        }
+        document.addEventListener('click', startAudio, {once: true});
+        document.addEventListener('touchstart', startAudio, {once: true});
 
-  <!-- Background music player is now visible in the card -->
+        /* --- App data --- */
+        const herName = 'Skylar';
+        const yourName = '— Noah';
+        const dateLine = 'Happy Valentine\u2019s Day';
 
-<script>
-  // Play audio on first user interaction (mobile autoplay policy workaround)
-  let audioStarted = false;
-  function startAudio() {
-    if (!audioStarted) {
-      const audio = document.getElementById("audio");
-      audio.muted = false;
-      audio.play().catch(() => {});
-      audioStarted = true;
-      document.removeEventListener("click", startAudio);
-      document.removeEventListener("touchstart", startAudio);
-    }
-  }
-  document.addEventListener("click", startAudio);
-  document.addEventListener("touchstart", startAudio);
-  // Names + header
-  const herName = "Skylar";
-  const yourName = "— Noah";
-  const dateLine = "Happy Valentine’s Day 💘";
+        const steps = [
+          { text: `Hey ${herName} 💗`, hint: "Let's go 🥰" },
+          { text: "I made this for you because you're so special to me.", hint: "Keep reading 💕" },
+          { text: "I've been thinking about how much you mean to me.", hint: "Next up..." },
+          { text: "You're absolutely stunning, inside and out.", hint: "You look amazing ✨" },
+          { text: "I'm so proud of you for becoming an RBT.", hint: "You worked so hard ❤️" },
+          { text: "Being with you is my favorite part of every day.", hint: "You know this ❤️" },
+          { text: "There's something I need to ask you.", hint: "The important part" },
+          { text: `${herName}\u2026 will you be my Valentine? 💝`, hint: "I really hope so 💕", isQuestion: true },
+        ];
 
-  // Prompt journey - personalized messages (not generic)
-  const steps = [
-    { text: `Hey ${herName} 💗`, hint: "Let's go 🥰" },
-    { text: "I made this for you because you're so special to me.", hint: "Keep reading 💕" },
-    { text: "I've been thinking about how much you mean to me.", hint: "Next up..." },
-    { text: "You're absolutely stunning, inside and out.", hint: "You look amazing ✨" },
-    { text: "I'm so proud of you for becoming an RBT.", hint: "You worked so hard ❤️" },
-    { text: "Being with you is my favorite part of every day.", hint: "You know this ❤️" },
-    { text: "There's something I need to ask you.", hint: "The important part" },
-    { text: `${herName}… will you be my Valentine? 💝`, hint: "I really hope so 💕", isQuestion: true },
-  ];
+        let idx = 0;
+        const bubble = document.getElementById('bubble');
+        const hint = document.getElementById('hint');
+        const progress = document.getElementById('progress');
+        const backBtn = document.getElementById('backBtn');
+        const signature = document.getElementById('signature');
+        const topSub = document.getElementById('topSub');
+        const actions = document.getElementById('actions');
+        const content = document.getElementById('content');
+        const musicBtn = document.getElementById('musicBtn');
 
-  let idx = 0;
+        signature.textContent = yourName;
+        topSub.textContent = dateLine;
 
-  const bubble = document.getElementById("bubble");
-  const hint = document.getElementById("hint");
-  const progress = document.getElementById("progress");
-  const backBtn = document.getElementById("backBtn");
-  const signature = document.getElementById("signature");
-  const topSub = document.getElementById("topSub");
-  const actions = document.getElementById("actions");
-  const content = document.getElementById("content");
+        function render(){
+          const total = steps.length + 1;
+          progress.textContent = `Step ${Math.min(idx+1,total)} of ${total}`;
+          backBtn.disabled = idx === 0;
 
-  signature.textContent = yourName;
-  topSub.textContent = dateLine;
+          const step = steps[idx];
+          bubble.textContent = step.text;
+          hint.textContent = step.hint || '';
 
-  function render() {
-    const total = steps.length + 1;
-    progress.textContent = `Step ${Math.min(idx+1, total)} of ${total}`;
-    backBtn.disabled = idx === 0;
+          if (step.isQuestion){
+            actions.innerHTML = `\
+              <div class="row">\
+                <button type="button" class="secondary" onclick="back()">Back</button>\
+                <button type="button" class="primary" onclick="yes()">YES 💖</button>\
+              </div>\
+              <div class="row" style="margin-top:10px;">\
+                <button type="button" class="secondary" id="noBtn">No 😶</button>\
+              </div>\
+            `;
+            attachNoBtnListeners();
+          } else {
+            actions.innerHTML = `\
+              <div class="row">\
+                <button type="button" class="secondary" onclick="back()" ${idx===0? 'disabled' : ''}>Back</button>\
+                <button type="button" class="primary" onclick="next()">Next</button>\
+              </div>\
+            `;
+          }
 
-    const step = steps[idx];
-    bubble.textContent = step.text;
-    hint.textContent = step.hint || "";
+          // sync slideshow with narrative (wrap if fewer slides)
+          try{ showSlide(idx); } catch(e){}
+        }
 
-    if (step.isQuestion) {
-      actions.innerHTML = `
-        <div class="row">
-          <button class="secondary" onclick="back()">Back</button>
-          <button class="primary" onclick="yes()">YES 💖</button>
-        </div>
-        <div class="row">
-          <button class="secondary" id="noBtn" onclick="no()">No 😶</button>
-        </div>
-      `;
+        function next(){ if (idx < steps.length - 1) idx++; render(); }
+        function back(){ if (idx > 0) idx--; render(); }
 
-      const noBtn = document.getElementById("noBtn");
+        function yes(){
+          content.innerHTML = `\
+            <div class="yesScreen">\
+              <div class="hearts">💖💖💖</div>\
+              <img src="Snoopy Heart.png" alt="Snoopy celebration" class="snoopy-cheer">\
+              <div class="big">YOU'RE MY VALENTINE!</div>\
+              <p class="small">You just made me the happiest 🥹</p>\
+              <p class="small">I love you, ${herName}. 💕</p>\
+              <div style="margin-top:12px;">\
+                <button type="button" class="primary" onclick="confetti()">Celebrate with me ✨</button>\
+              </div>\
+            </div>\
+          `;
+          actions.innerHTML = `\
+            <div class="row">\
+              <button type="button" class="secondary" onclick="toggleMusic()">🎶</button>\
+              <button type="button" class="secondary" onclick="share()">Share</button>\
+            </div>\
+          `;
+          progress.textContent = `Step ${steps.length+1} of ${steps.length+1}`;
+        }
 
-      noBtn.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        dodge(noBtn);
-      }, {passive:false});
+        function no(){ alert("That button appears to be broken 🤔 Try the other one 😇"); }
 
-      noBtn.addEventListener("mouseover", () => dodge(noBtn));
-    } else {
-      actions.innerHTML = `
-        <div class="row">
-          <button class="secondary" onclick="back()" ${idx===0?'disabled':''}>Back</button>
-          <button class="primary" onclick="next()">Next</button>
-        </div>
-      `;
-    }
-    // sync slideshow to current narrative step
-    try { showSlide(idx); } catch(e) { /* ignore if slideshow not ready */ }
-  }
+        function attachNoBtnListeners(){
+          // ensure the element exists then attach listeners
+          setTimeout(()=>{
+            const noBtn = document.getElementById('noBtn');
+            if (!noBtn) return;
+            const touchHandler = (e)=>{ e.preventDefault(); dodge(noBtn); };
+            noBtn.addEventListener('touchstart', touchHandler, {passive:false});
+            noBtn.addEventListener('mouseover', ()=> dodge(noBtn));
+            // keep click fallback
+            noBtn.addEventListener('click', (e)=>{ e.preventDefault(); dodge(noBtn); });
+          }, 20);
+        }
 
-  function next() {
-    if (idx < steps.length - 1) idx++;
-    render();
-  }
+        function dodge(btn){
+          try{
+            const original = btn.textContent;
+            btn.textContent = 'Oops!';
+            btn.style.transition = 'transform 220ms ease, left 300ms ease, top 300ms ease';
+            btn.style.position = 'fixed';
+            const margin = 12;
+            const x = Math.floor(Math.random() * (window.innerWidth - btn.offsetWidth - margin*2)) + margin;
+            const y = Math.floor(Math.random() * (window.innerHeight - btn.offsetHeight - margin*4)) + margin*3;
+            btn.style.left = x + 'px'; btn.style.top = y + 'px';
+            btn.style.transform = 'scale(1.02) rotate(-6deg)';
+            setTimeout(()=>{ btn.style.transform = 'scale(1) rotate(0deg)'; }, 220);
+            setTimeout(()=>{ btn.textContent = original; btn.style.position=''; btn.style.left=''; btn.style.top=''; btn.style.transition=''; }, 900);
+          }catch(e){ console.error(e); }
+        }
 
-  function back() {
-    if (idx > 0) idx--;
-    render();
-  }
+        function toggleMusic(){
+          if (!audioEl) return;
+          audioStarted = true;
+          if (audioEl.paused){ audioEl.play().catch(()=>{}); musicBtn.textContent = 'Pause music'; }
+          else { audioEl.pause(); musicBtn.textContent = 'Play music'; }
+        }
 
-  function yes() {
-    content.innerHTML = `
-      <div class="yesScreen">
-        <div class="hearts">💖💖💖</div>
-        <img src="Snoopy Heart.png" alt="Snoopy celebration" class="snoopy-cheer">
-        <div class="big">YOU'RE MY VALENTINE!</div>
-        <p class="small">You just made me the happiest 🥹</p>
-        <p class="small">I love you, ${herName}. 💕</p>
-        <button class="primary" onclick="confetti()">Celebrate with me ✨</button>
-      </div>
-    `;
-    actions.innerHTML = `
-      <div class="row">
-        <button class="secondary" onclick="toggleMusic()">🎶</button>
-        <button class="secondary" onclick="share()">Share</button>
-      </div>
-    `;
-    progress.textContent = `Step ${steps.length+1} of ${steps.length+1}`;
-  }
+        function share(){
+          if (navigator.share){ navigator.share({ title: '💌 For Skylar', text: 'Open this 💘', url: location.href }).catch(()=>{}); }
+          else { prompt('Copy this link:', location.href); }
+        }
 
-  function no() {
-    alert("That button appears to be broken 🤔 Try the other one 😇");
-  }
+        function confetti(){
+          for (let i=0;i<30;i++){
+            const s = document.createElement('div');
+            s.textContent = ['✨','💖','💘','🌸'][Math.floor(Math.random()*4)];
+            s.style.position='fixed'; s.style.left=(Math.random()*100)+'vw'; s.style.top='110vh';
+            s.style.fontSize=(14+Math.random()*20)+'px'; s.style.transition='transform 1.2s ease, opacity 1.2s ease';
+            document.body.appendChild(s);
+            requestAnimationFrame(()=>{ s.style.opacity='0'; s.style.transform='translateY(-140vh) rotate('+(Math.random()*360)+'deg)'; });
+            setTimeout(()=>s.remove(), 1300);
+          }
+        }
 
-  function dodge(btn){
-    // playful dodge: briefly change text, animate, then move
-    try {
-      const original = btn.textContent;
-      btn.textContent = "Oops!";
-      btn.style.transition = "transform 220ms ease, left 300ms ease, top 300ms ease";
-      btn.style.position = "fixed";
-      const x = Math.floor(Math.random() * (window.innerWidth - btn.offsetWidth - 40)) + 10;
-      const y = Math.floor(Math.random() * (window.innerHeight - btn.offsetHeight - 80)) + 60;
-      // animate with small transform first
-      btn.style.transform = "scale(1.05) rotate(-6deg)";
-      setTimeout(()=>{ btn.style.left = x + "px"; btn.style.top = y + "px"; btn.style.transform = "scale(1) rotate(0deg)"; }, 80);
-      setTimeout(()=>{ btn.textContent = original; }, 900);
-    } catch(e) {
-      console.error(e);
-    }
-  }
+        /* --- Slideshow: manual, synced to steps --- */
+        let __slideIndex = 0;
+        function showSlide(i){
+          const container = document.getElementById('slideshow');
+          if (!container) return;
+          const slides = Array.from(container.querySelectorAll('img.slide'));
+          const dots = document.getElementById('slideshow-dots');
+          if (slides.length === 0) return;
+          __slideIndex = (i + slides.length) % slides.length;
+          slides.forEach((s, idx) => s.classList.toggle('active', idx === __slideIndex));
+          if (dots){ Array.from(dots.children).forEach((d, idx)=> d.classList.toggle('active', idx === __slideIndex)); }
+        }
 
-  function toggleMusic() {
-    const a = document.getElementById("audio");
-    audioStarted = true;
-    if (a.paused) a.play().catch(()=>{});
-    else a.pause();
-  }
+        function nextSlide(){ showSlide(__slideIndex + 1); }
 
-  function share() {
-    if (navigator.share) {
-      navigator.share({ title: "💌 For Skylar", text: "Open this 💘", url: location.href }).catch(()=>{});
-    } else {
-      prompt("Copy this link:", location.href);
-    }
-  }
+        function initSlideshow(){
+          const container = document.getElementById('slideshow');
+          if (!container) return;
+          const slides = Array.from(container.querySelectorAll('img.slide'));
+          const dotsWrap = document.getElementById('slideshow-dots');
+          if (!dotsWrap) return;
+          dotsWrap.innerHTML = '';
+          slides.forEach((_, idx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.addEventListener('click', ()=> showSlide(idx));
+            dotsWrap.appendChild(btn);
+          });
+          showSlide(0);
+        }
 
-  function confetti() {
-    for (let i=0; i<30; i++){
-      const s = document.createElement("div");
-      s.textContent = ["✨","💖","💘","🌸"][Math.floor(Math.random()*4)];
-      s.style.position="fixed";
-      s.style.left=(Math.random()*100)+"vw";
-      s.style.top="110vh";
-      s.style.fontSize=(16+Math.random()*18)+"px";
-      s.style.transition="transform 1.2s ease, opacity 1.2s ease";
-      document.body.appendChild(s);
-
-      requestAnimationFrame(()=>{
-        s.style.opacity="0";
-        s.style.transform=`translateY(-140vh) rotate(${Math.random()*360}deg)`;
-      });
-
-      setTimeout(()=>s.remove(), 1300);
-    }
-  }
-  // --- Slideshow logic (manual slides; no auto-cycle) ---
-  let __slideIndex = 0;
-
-  function showSlide(i){
-    const container = document.getElementById('slideshow');
-    if (!container) return;
-    const slides = Array.from(container.querySelectorAll('img.slide'));
-    const dots = document.getElementById('slideshow-dots');
-    if (slides.length === 0) return;
-    __slideIndex = (i + slides.length) % slides.length;
-    slides.forEach((s, idx) => s.classList.toggle('active', idx === __slideIndex));
-    if (dots){
-      Array.from(dots.children).forEach((d, idx)=> d.classList.toggle('active', idx === __slideIndex));
-    }
-  }
-
-  function nextSlide(){
-    showSlide(__slideIndex + 1);
-  }
-
-  function initSlideshow(){
-    const container = document.getElementById('slideshow');
-    if (!container) return;
-    const slides = Array.from(container.querySelectorAll('img.slide'));
-    const dotsWrap = document.getElementById('slideshow-dots');
-    if (!dotsWrap) return;
-    dotsWrap.innerHTML = '';
-    slides.forEach((_, idx) => {
-      const btn = document.createElement('button');
-      btn.addEventListener('click', ()=>{
-        showSlide(idx);
-        // no auto interval; manual control
-      });
-      dotsWrap.appendChild(btn);
-    });
-    showSlide(0);
-  }
-
-  // initialize UI
-  render();
-  // wait a tick to ensure DOM is parsed then init slideshow
-  setTimeout(initSlideshow, 50);
+        // initialize
+        render();
+        setTimeout(initSlideshow, 60);
+      </script>
+      </body>
+      </html>
 </script>
 </body>
 </html>
