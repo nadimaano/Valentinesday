@@ -23,11 +23,14 @@
     }
     .snoopy-deco{
       position: absolute;
-      right: -15px;
-      top: 20px;
-      font-size: 80px;
-      opacity: 0.15;
+      right: -20px;
+      bottom: -10px;
+      width: 130px;
+      height: 130px;
+      opacity: 0.85;
       z-index: 0;
+      pointer-events: none;
+      object-fit: contain;
     }
     .top{
       padding: var(--pad);
@@ -136,9 +139,12 @@
       50% { transform: scale(1.1); }
     }
     .snoopy-cheer {
-      font-size: 120px;
-      margin: 16px 0;
+      width: 180px;
+      height: 180px;
+      margin: 16px auto;
       animation: bounce 1s ease-in-out infinite;
+      pointer-events: none;
+      object-fit: contain;
     }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
@@ -148,7 +154,7 @@
 </head>
 <body>
   <div class="card" role="application" aria-label="Valentine App">
-    <div class="snoopy-deco">🐶</div>
+    <img src="Snoopy Heart.jpg" alt="Snoopy decoration" class="snoopy-deco">
     <div class="top">
       <div class="badge">💗</div>
       <div>
@@ -177,7 +183,7 @@
   </div>
 
   <!-- Optional tiny background music placeholder -->
-  <audio id="audio" loop>
+  <audio id="audio" autoplay loop>
     <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=" type="audio/wav">
   </audio>
 
@@ -192,7 +198,7 @@
     { text: `Hey ${herName} 💗`, hint: "Let's go 🥰" },
     { text: "I made this for you because you're so special to me.", hint: "Keep reading 💕" },
     { text: "I've been thinking about how much you mean to me.", hint: "Next up..." },
-    { text: "You're absolutely stunning, inside and out.", hint: "Snoopy agrees 🐶" },
+    { text: "You're absolutely stunning, inside and out.", hint: "You look amazing ✨" },
     { text: "Being with you is my favorite part of every day.", hint: "You know this ❤️" },
     { text: "There's something I need to ask you.", hint: "The important part" },
     { text: `${herName}… will you be my Valentine? 💝`, hint: "I really hope so 💕", isQuestion: true },
@@ -266,7 +272,7 @@
     content.innerHTML = `
       <div class="yesScreen">
         <div class="hearts">💖💖💖</div>
-        <div class="snoopy-cheer">🐶</div>
+        <img src="Snoopy Heart.jpg" alt="Snoopy celebration" class="snoopy-cheer">
         <div class="big">YOU'RE MY VALENTINE!</div>
         <p class="small">You just made me the happiest 🥹</p>
         <p class="small">Text me: <b>"YES 💘"</b> and I'll treasure it forever.</p>
